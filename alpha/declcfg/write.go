@@ -153,6 +153,20 @@ func (writer *MermaidWriter) WriteChannels(cfg DeclarativeConfig, out io.Writer)
 		}
 	}
 
+	out.Write([]byte("%%{\n"))
+	out.Write([]byte("  init: {\n"))
+	out.Write([]byte("    'theme': 'base',\n"))
+	out.Write([]byte("    'themeVariables': {\n"))
+	out.Write([]byte("      'primaryColor': '#81007F',\n"))
+	out.Write([]byte("      'primaryTextColor': '#fff',\n"))
+	out.Write([]byte("      'primaryBorderColor': '#7C0000',\n"))
+	out.Write([]byte("      'lineColor': '#F8B229',\n"))
+	out.Write([]byte("      'secondaryColor': '#006100',\n"))
+	out.Write([]byte("      'tertiaryColor': '#fff'\n"))
+	out.Write([]byte("    }\n"))
+	out.Write([]byte("  }\n"))
+	out.Write([]byte(" }%%\n"))
+
 	out.Write([]byte("graph LR\n"))
 	pkgNames := []string{}
 	for pname := range pkgs {
